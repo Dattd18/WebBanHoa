@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>May Flower - Bó Hoa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Roboto&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #fff;
+            color: #333;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: flex-end;
+            padding: 8px 20px;
+            background-color: #f8f8f8;
+            border-bottom: 1px solid #eee;
+        }
+
+        .contact {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        /* Header Styles */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .logo {
+            width: 150px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            max-width: 100%;
+        }
+
+        .nav {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: #008080;
+            font-weight: bold;
+            padding: 5px 0;
+            transition: all 0.3s;
+        }
+
+        .nav a:hover {
+            color: #e57373;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            padding: 5px 15px;
+            background-color: #f9f9f9;
+        }
+
+        .search-container input {
+            border: none;
+            background: transparent;
+            outline: none;
+            padding: 5px;
+            width: 150px;
+        }
+
+        .icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .icon {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+        }
+
+        .promo-banner {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-weight: bold;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: #ffeeee;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .hero-text {
+            width: 50%;
+            color: #8b5a5a;
+        }
+
+        .hero-text h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .hero-text button {
+            background-color: #f8b4d9;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            color: #8b5a5a;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            display: flex;
+            gap: 40px;
+        }
+
+        .sidebar {
+            width: 200px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar li {
+            margin-bottom: 10px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .product-list {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .product {
+            border: 1px solid #eee;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .product:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .product img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
+
+        .product .info {
+            padding: 15px;
+        }
+
+        .product .info h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .product .info p {
+            color: #d0021b;
+            font-weight: bold;
+        }
+
+        footer {
+            background-color: #f9f9f9;
+            padding: 40px 20px;
+            margin-top: 50px;
+            border-top: 1px solid #ddd;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            /* Thêm flex-wrap để tự động xuống dòng khi không đủ chỗ */
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .company-info,
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+            /* Khoảng cách dưới mỗi phần */
+        }
+
+        .company-info p {
+            margin-top: 15px;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #555;
+            /* Màu chữ sáng hơn */
+        }
+
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-column ul li a {
+            color: #333;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .footer-column ul li a:hover {
+            color: #008080;
+            /* Đổi màu khi hover */
+        }
+
+        /* Social Media Icons */
+        .social-media {
+            display: flex;
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .social-media svg {
+            width: 30px;
+            height: 30px;
+            fill: #008080;
+            /* Màu cho biểu tượng */
+            transition: fill 0.3s ease;
+        }
+
+        .social-media svg:hover {
+            fill: #e57373;
+            /* Đổi màu khi hover */
+        }
+
+        /* Payment Methods */
+        .payment-methods {
+            margin-top: 30px;
+        }
+
+        .payment-methods h3 {
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .payment-icons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .payment-icons img {
+            width: 200px;
+            height: 200px;
+            object-fit: contain;
+        }
+
+        /* Copyright */
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 12px;
+            color: #777;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="top-bar">
+        <div class="contact">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                </path>
+            </svg>
+            <span>&nbsp;Hỗ trợ khách hàng: 1900 8079</span>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            <a href="index.html">
+                <img src="s.jpg" alt="May Flower">
+            </a>
+        </div>
+
+        <ul class="nav">
+            <li><a href="/bohoa.html">BỘ HOA</a></li>
+            <li><a href="/binhhoa.html">BÌNH HOA</a></li>
+            <li><a href="/langhoa.html">LẴNG HOA</a></li>
+            <li><a href="/giohoa.html">GIỎ HOA</a></li>
+            <li><a href="/kehoa.html">KỆ HOA</a></li>
+            <li><a href="/hoaqua.html">GIỎ HOA QUÀ</a></li>
+        </ul>
+
+        <div class="search-container">
+            <input type="text" placeholder="bạn tìm gì...">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+        </div>
+
+        <div class="icons">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path
+                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                </path>
+            </svg>
+            <a href="/Login.html">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+            </a>
+
+            <a href="/giohang.html">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+            </a>
+        </div>
+    </header>
+
+    <!-- Promo Banner -->
+    <div class="promo-banner">
+        TEACHER'S DAY - BUY NOW
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="hero-image">
+            <img src="bbh1.jpg" alt="Flower bouquet">
+        </div>
+    </div>
+    <div class="container">
+        <aside class="sidebar">
+            <ul>
+                <li>BÓ HOA</li>
+                <li>BÌNH HOA</li>
+                <li>LẴNG HOA</li>
+                <li>GIỎ HOA</li>
+                <li>KỆ HOA</li>
+                <li>GIỎ HOA QUÀ</li>
+            </ul>
+        </aside>
+
+        <section class="product-list">
+            <div class="product">
+                <img src="h1.jpd.webp" alt="Thi thầm mùa xuân">
+                <div class="info">
+                    <h4>Thi thầm mùa xuân</h4>
+                    <p>1.350.000 ₫</p>
+                </div>
+            </div>
+            <div class="product">
+                <img src="h2.webp" alt="Kiêu sa trong nắng">
+                <div class="info">
+                    <h4>Kiêu sa trong nắng</h4>
+                    <p>1.350.000 ₫</p>
+                </div>
+            </div>
+            <div class="product">
+                <img src="h3.webp" alt="Kiêu sa trong nắng">
+                <div class="info">
+                    <h4>Giai điệu thanh xuân</h4>
+                    <p>1.590.000 ₫</p>
+                </div>
+            </div>
+            <div class="product">
+                <img src="h4.webp" alt="Kiêu sa trong nắng">
+                <div class="info">
+                    <h4>Giai điệu thanh xuân</h4>
+                    <p>1.590.000 ₫</p>
+                </div>
+            </div>
+            <div class="product">
+                <img src="h5.webp" alt="Kiêu sa trong nắng">
+                <div class="info">
+                    <h4>Giai điệu thanh xuân</h4>
+                    <p>1.590.000 ₫</p>
+                </div>
+            </div>
+            <div class="product">
+                <img src="h6.webp" alt="Kiêu sa trong nắng">
+                <div class="info">
+                    <h4>Giai điệu thanh xuân</h4>
+                    <p>1.590.000 ₫</p>
+                </div>
+            </div>
+            <div class="product">
+                <img src="h7.webp" alt="Kiêu sa trong nắng">
+                <div class="info">
+                    <h4>Giai điệu thanh xuân</h4>
+                    <p>1.590.000 ₫</p>
+                </div>
+            </div>
+            <div class="product">
+                <img src="h8.webp" alt="Kiêu sa trong nắng">
+                <div class="info">
+                    <h4>Giai điệu thanh xuân</h4>
+                    <p>1.590.000 ₫</p>
+                </div>
+            </div>
+            <div class="product">
+                <img src="h9.webp" alt="Kiêu sa trong nắng">
+                <div class="info">
+                    <h4>Giai điệu thanh xuân</h4>
+                    <p>1.590.000 ₫</p>
+                </div>
+            </div>
+            <div class="product">
+                <img src="h10.webp" alt="Kiêu sa trong nắng">
+                <div class="info">
+                    <h4>Giai điệu thanh xuân</h4>
+                    <p>1.590.000 ₫</p>
+                </div>
+            </div>
+            <div class="product">
+                <img src="h11.webp" alt="Kiêu sa trong nắng">
+                <div class="info">
+                    <h4>Giai điệu thanh xuân</h4>
+                    <p>1.590.000 ₫</p>
+                </div>
+            </div>
+            <div class="product">
+                <img src="h12.webp" alt="Kiêu sa trong nắng">
+                <div class="info">
+                    <h4>Giai điệu thanh xuân</h4>
+                    <p>1.590.000 ₫</p>
+                </div>
+            </div>
+            <!-- Thêm các sản phẩm khác tương tự -->
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="company-info">
+                <div class="footer-logo">
+                    <img src="s.jpg" alt="May Flower">
+                </div>
+                <p>CÔNG TY CỔ PHẦN THỜI TRANG KOWIL VIỆT NAM</p>
+                <p>Hotline: 1900 8079</p>
+                <p>6:30 - 19:00 tất cả các ngày trong tuần</p>
+                <p>VP Phía Bắc: 189/17 Hoàng Văn Vietnamese, Phường Đại Mỗ</p>
+                <p>Nam Từ Liêm, Hà Nội</p>
+            </div>
+
+            <div class="footer-column">
+                <h3>GIỚI THIỆU MAY</h3>
+                <ul>
+                    <li><a href="#">Giới thiệu</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Hệ thống cửa hàng</a></li>
+                    <li><a href="#">Liên hệ với May</a></li>
+                    <li><a href="#">Chính sách bảo mật</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>HỖ TRỢ KHÁCH HÀNG</h3>
+                <ul>
+                    <li><a href="#">Hỏi đáp</a></li>
+                    <li><a href="#">Chính sách vận chuyển</a></li>
+                    <li><a href="#">Hướng dẫn chọn hoa</a></li>
+                    <li><a href="#">Hướng dẫn thanh toán</a></li>
+                    <li><a href="#">Quy định đổi hàng</a></li>
+                    <li><a href="#">Hướng dẫn mua hàng</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>KẾT NỐI</h3>
+                <div class="social-media">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                    </svg>
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+                        </path>
+                        <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                    </svg>
+                </div>
+
+                <div class="payment-methods">
+                    <h3>PHƯƠNG THỨC THANH TOÁN</h3>
+                    <div class="payment-icons">
+                        <img src="z6525124969799_715f8944d273da50589c61e8be9e6b81.jpg" alt="COD">
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="copyright">
+            © 2023 by Reed Fashion - Phát triển bởi...
+        </div>
+    </footer>
+</body>
+
+</html>
