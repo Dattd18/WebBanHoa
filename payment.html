@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đơn Hàng</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        .order-container {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .order-title {
+            font-size: 18px;
+            color: #555;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .order-section {
+            margin-bottom: 15px;
+        }
+
+        .product-header {
+            display: flex;
+            justify-content: space-between;
+            color: #777;
+            padding-bottom: 10px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .product-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .product-name {
+            color: #555;
+            font-size: 14px;
+        }
+
+        .product-price {
+            font-weight: bold;
+            color: #333;
+            font-size: 14px;
+        }
+
+        .subtotal,
+        .shipping,
+        .total {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            color: #555;
+            font-size: 14px;
+        }
+
+        .total {
+            border-top: 1px solid #eee;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .payment-methods {
+            margin: 20px 0;
+        }
+
+        .payment-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .payment-option label {
+            margin-left: 10px;
+            color: #333;
+            font-size: 14px;
+        }
+
+        .paypal-logo {
+            height: 25px;
+            margin-left: 10px;
+        }
+
+        .paypal-help {
+            margin-left: 10px;
+            color: #555;
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        .terms {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            font-size: 13px;
+        }
+
+        .terms input {
+            margin-top: 3px;
+            margin-right: 10px;
+        }
+
+        .terms a {
+            color: #555;
+            text-decoration: none;
+        }
+
+        .checkout-button {
+            width: 100%;
+            padding: 15px;
+            background-color: #d47658;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        .privacy-notice {
+            margin-top: 15px;
+            color: #777;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        .privacy-notice a {
+            color: #555;
+            text-decoration: none;
+        }
+
+        .payment-info {
+            color: #777;
+            font-size: 13px;
+            line-height: 1.5;
+            margin: 10px 0 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="order-container">
+        <h1 class="order-title">ĐƠN HÀNG CỦA BẠN</h1>
+
+        <div class="order-section">
+            <div class="product-header">
+                <span>SẢN PHẨM</span>
+                <span>TẠM TÍNH</span>
+            </div>
+
+            <div class="product-item">
+                <span class="product-name">Lồng Lấy Cắm Từ Câu × 1</span>
+                <span class="product-price">1,000,000₫</span>
+            </div>
+
+            <div class="subtotal">
+                <span>Tạm tính</span>
+                <span>1,000,000₫</span>
+            </div>
+
+            <div class="shipping">
+                <span>Giao hàng</span>
+                <span>Phí giao hàng có trợ giá (bán kính <7km): 30,000₫</span>
+            </div>
+
+            <div class="total">
+                <span>Tổng</span>
+                <span>1,030,000₫</span>
+            </div>
+        </div>
+
+        <div class="payment-methods">
+            <div class="payment-option">
+                <input type="radio" id="bank-transfer" name="payment" checked>
+                <label for="bank-transfer">Chuyển khoản ngân hàng</label>
+            </div>
+
+            <div class="payment-info">
+                Vui lòng cung cấp mã đặt hàng ( sẽ có sau khi bạn nhận Đặt hàng) của bạn trong nội dung chuyển tiền. Đơn
+                hàng của bạn sẽ được tự động xử lý tự động ngay sau khi chúng tôi nhận được tiền.
+            </div>
+
+            <div class="payment-option">
+                <input type="radio" id="paypal" name="payment">
+                <label for="paypal">Paypal</label>
+                <img src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_37x23.jpg" alt="PayPal"
+                    class="paypal-logo">
+                <a href="#" class="paypal-help">Paypal là gì?</a>
+            </div>
+        </div>
+
+        <div class="terms">
+            <input type="checkbox" id="terms" required>
+            <label for="terms">Tôi đã đọc và đồng ý với <a href="#">điều khoản và điều kiện của website</a> *</label>
+        </div>
+
+        <button class="checkout-button">ĐẶT HÀNG</button>
+
+        <p class="privacy-notice">
+            Dữ liệu cá nhân của bạn sẽ được sử dụng để xử lý đơn đặt hàng của bạn, hỗ trợ trải nghiệm của bạn trên trang
+            web này và cho các mục đích khác được mô tả trong <a href="#">chính sách riêng tư</a>.
+        </p>
+    </div>
+</body>
+
+</html>
